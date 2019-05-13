@@ -35,8 +35,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-   
-    
+      
 }
     public void initXlet(XletContext context) {
       
