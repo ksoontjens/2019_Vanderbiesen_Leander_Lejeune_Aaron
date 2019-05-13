@@ -122,7 +122,7 @@ public void volgendeVraag()
       if (huidigevraag==0 && arg0.getActionCommand().equals("knop4"))
       {
          volgendeVraag();
-         startgame();
+        // startgame();
          System.out.println("NICEONE");
       }
       else{
@@ -131,7 +131,7 @@ public void volgendeVraag()
       }
       if(huidigevraag==1 && arg0.getActionCommand().equals("knop2")){
           volgendeVraag();
-          startgame();
+          //startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -139,7 +139,7 @@ public void volgendeVraag()
       }
      if(huidigevraag==2 && arg0.getActionCommand().equals("knop4")){
           volgendeVraag();
-          startgame();
+          //startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -147,7 +147,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==3 && (arg0.getActionCommand().equals("knop1") || arg0.getActionCommand().equals("knop2") || arg0.getActionCommand().equals("knop3") || arg0.getActionCommand().equals("knop4"))){
           volgendeVraag();
-          startgame();
+        //  startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -155,7 +155,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==4 && arg0.getActionCommand().equals("knop1")){
           volgendeVraag();
-          startgame();
+        //  startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -163,7 +163,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==5 && arg0.getActionCommand().equals("knop1")){
           volgendeVraag();
-          startgame();
+        //  startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -171,7 +171,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==6 && arg0.getActionCommand().equals("knop3")){
           volgendeVraag();
-          startgame();
+        //  startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -179,7 +179,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==7 && arg0.getActionCommand().equals("knop1")){
           volgendeVraag();
-          startgame();
+         // startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -187,7 +187,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==8 && arg0.getActionCommand().equals("knop1")){
           volgendeVraag();
-          startgame();
+         // startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -195,7 +195,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==9 && arg0.getActionCommand().equals("knop4")){
           volgendeVraag();
-          startgame();
+        //  startgame();
           System.out.println("NICEONE");
       }
       else{
@@ -203,7 +203,7 @@ public void volgendeVraag()
       }
        if(huidigevraag==10 && arg0.getActionCommand().equals("knop4")){
           volgendeVraag();
-          startgame();
+         // startgame();
           System.out.println("NICEONE");
       }
       else{
