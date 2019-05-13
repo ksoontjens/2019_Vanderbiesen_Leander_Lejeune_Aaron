@@ -35,17 +35,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-<<<<<<< HEAD
-    System.out.println(huidigevraag);
-    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
-    button1.setTextContent(vragen[huidigevraag].an1, HVisible.NORMAL_STATE);
-    button2.setTextContent(vragen[huidigevraag].an2, HVisible.NORMAL_STATE);
-    button3.setTextContent(vragen[huidigevraag].an3, HVisible.NORMAL_STATE);
-    button4.setTextContent(vragen[huidigevraag].an4, HVisible.NORMAL_STATE);
-    
-=======
-      
->>>>>>> 6b7401d094969ff7b6749ab2973b42d9fba409be
+
 }
     public void initXlet(XletContext context) {
       
