@@ -27,7 +27,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
    public HTextButton button4;
    public int lives=3;
    public HStaticText hst;
-   Vraag vragen[]=new Vraag[10];
+   Vraag vragen[]=new Vraag[11];
    int huidigevraag=0;
     public HelloTVXlet() {
         
@@ -35,23 +35,23 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
+   
+    
 }
     public void initXlet(XletContext context) {
-        
-        
-       scene= HSceneFactory.getInstance().getDefaultHScene();
       
-      HStaticText hst=new HStaticText("Hello welcome to the Impossible Quiz",250,50,400,200);
+      scene= HSceneFactory.getInstance().getDefaultHScene();
+      hst=new HStaticText("Hello welcome to the Impossible Quiz",250,50,400,200);
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
-      
       scene.add(hst);
+       
       scene.setVisible(true);
+      fillQuestions();
       startgame();
       scene.validate();
       button1.requestFocus();
-   
+      
     }
 
     public void startXlet() {
@@ -66,12 +66,13 @@ public void volgendeVraag()
      
     }
     public void startgame(){
-       vragen[0]=new Vraag("How many holes in a POLO?","one","two","three", "four");
-        vragen[1]= new Vraag("Test","1","2","3","4");
-       hst=new HStaticText(vragen[huidigevraag].vrg,20,300,680,100); // tekst,x,y,w,h
-       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
-       hst.setBackground(Color.BLUE);
-       scene.add(hst);
+    
+   
+      hst=new HStaticText(vragen[huidigevraag].vrg,20,300,680,100); // tekst,x,y,w,h
+      hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
+      hst.setBackground(Color.BLUE);
+       hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
+      scene.add(hst);
      
       button1=new HTextButton(vragen[huidigevraag].an1,20,420,320,50); // tekst,x,y,w,h
       button1.setBackgroundMode(HVisible.BACKGROUND_FILL);
@@ -118,17 +119,107 @@ public void volgendeVraag()
       {
          volgendeVraag();
          startgame();
-         
       }
       else{
           System.out.println("false");
           lives--;
       }
       if(huidigevraag==1 && arg0.getActionCommand().equals("knop2")){
+          volgendeVraag();
+          startgame();
           System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==2 && arg0.getActionCommand().equals("knop4")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==3 && arg0.getActionCommand().equals("knop1") && arg0.getActionCommand().equals("knop2") && arg0.getActionCommand().equals("knop3") && arg0.getActionCommand().equals("knop4")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==4 && arg0.getActionCommand().equals("knop1")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==5 && arg0.getActionCommand().equals("knop1")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==6 && arg0.getActionCommand().equals("knop3")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==7 && arg0.getActionCommand().equals("knop1")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==8 && arg0.getActionCommand().equals("knop1")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==9 && arg0.getActionCommand().equals("knop4")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
+      }
+       if(huidigevraag==10 && arg0.getActionCommand().equals("knop4")){
+          volgendeVraag();
+          startgame();
+          System.out.println("NICEONE");
+      }
+      else{
+          lives--;
       }
     }
     public void fillQuestions(){
+     vragen[0] = new Vraag("How many holes in a POLO?","one","two","three", "four");
+      vragen[1] = new Vraag("What do you call a wingless fly?","a flap","a walk","a plum","Jason");
+      vragen[2] = new Vraag("Mary Rose sat on a pin", "O really?", "burst her piles", "aaaaaaaa", "mary Rose"); 
+      vragen[3] = new Vraag("Can you get this question wrong?", "nope", "no", "no way", "of course not");
+      vragen[4] = new Vraag("Can a match box?", "no but a tin can", "no", "yes", "yes, one can beat mike tyson");
+      vragen[5] = new Vraag("sdrawkcab noitseuq siht rewsna", "K.O", "what?", "I dont understand", "tennis elbow");
+      vragen[6] = new Vraag("sqrt(Onion)", "28", "carrots", "shallots", "Pi");
+      vragen[7] = new Vraag("Number of the next question", "8", "9", "10", "11");
+      vragen[8] = new Vraag("What was the answer of question 8", "this one", "that one", "that one", "that one");
+      vragen[9] = new Vraag("Are you this quiz?", "of course I am!", "No i dont", "THIS IS SPARTAAA", "5 chickenwings and a coke please");
+      vragen[10] =  new Vraag("Shangai?", "is indeed the largest city in China", "never been", "why is there a question mark?", "no, about 20cm off the ground");
+    }
+    
+    public void falseAnswer(){
         
     }
 }
