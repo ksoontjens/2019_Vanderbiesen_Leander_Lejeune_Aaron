@@ -60,16 +60,3 @@ hellotvxlet/build/00000.jar
 hellotvxlet/appcert.csr
 hellotvxlet/appcert.cer
 hellotvxlet/app.discroot.crt
-hellotvxlet/src/hellotvxlet/HelloTVXlet.java
-hellotvxlet/META-INF/SIG-BD00.SF
-hellotvxlet/META-INF/SIG-BD00.RSA
-hellotvxlet/keystore.store
-hellotvxlet/hellotvxlet.HelloTVXlet.zip
-hellotvxlet/dist/DiscImage/CERTIFICATE/BACKUP/app.discroot.crt
-hellotvxlet/dist/DiscImage/CERTIFICATE/app.discroot.crt
-hellotvxlet/dist/DiscImage/BDMV/JAR/00000.jar
-hellotvxlet/dist/DiscImage/BDMV/BACKUP/JAR/00000.jar
-hellotvxlet/build/classes/hellotvxlet/HelloTVXlet.class
-hellotvxlet/build/00000.jar
-hellotvxlet/appcert.cer
-hellotvxlet/app.discroot.crt
