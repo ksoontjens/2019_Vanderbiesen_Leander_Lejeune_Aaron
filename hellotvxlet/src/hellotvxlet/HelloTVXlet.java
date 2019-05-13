@@ -35,7 +35,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
+   
     
 }
     public void initXlet(XletContext context) {
@@ -67,11 +67,11 @@ public void volgendeVraag()
     }
     public void startgame(){
     
-      
    
       hst=new HStaticText(vragen[huidigevraag].vrg,20,300,680,100); // tekst,x,y,w,h
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
+       hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
       scene.add(hst);
      
       button1=new HTextButton(vragen[huidigevraag].an1,20,420,320,50); // tekst,x,y,w,h
