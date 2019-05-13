@@ -35,7 +35,12 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-   
+    System.out.println(huidigevraag);
+    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
+    button1.setTextContent(vragen[huidigevraag].an1, HVisible.NORMAL_STATE);
+    button2.setTextContent(vragen[huidigevraag].an2, HVisible.NORMAL_STATE);
+    button3.setTextContent(vragen[huidigevraag].an3, HVisible.NORMAL_STATE);
+    button4.setTextContent(vragen[huidigevraag].an4, HVisible.NORMAL_STATE);
     
 }
     public void initXlet(XletContext context) {
@@ -71,7 +76,6 @@ public void volgendeVraag()
       hst=new HStaticText(vragen[huidigevraag].vrg,20,300,680,100); // tekst,x,y,w,h
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
-       hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
       scene.add(hst);
      
       button1=new HTextButton(vragen[huidigevraag].an1,20,420,320,50); // tekst,x,y,w,h
@@ -119,6 +123,7 @@ public void volgendeVraag()
       {
          volgendeVraag();
          startgame();
+         System.out.println("NICEONE");
       }
       else{
           System.out.println("false");
@@ -132,7 +137,7 @@ public void volgendeVraag()
       else{
           lives--;
       }
-       if(huidigevraag==2 && arg0.getActionCommand().equals("knop4")){
+     if(huidigevraag==2 && arg0.getActionCommand().equals("knop4")){
           volgendeVraag();
           startgame();
           System.out.println("NICEONE");
@@ -140,7 +145,7 @@ public void volgendeVraag()
       else{
           lives--;
       }
-       if(huidigevraag==3 && arg0.getActionCommand().equals("knop1") && arg0.getActionCommand().equals("knop2") && arg0.getActionCommand().equals("knop3") && arg0.getActionCommand().equals("knop4")){
+       if(huidigevraag==3 && (arg0.getActionCommand().equals("knop1") || arg0.getActionCommand().equals("knop2") || arg0.getActionCommand().equals("knop3") || arg0.getActionCommand().equals("knop4"))){
           volgendeVraag();
           startgame();
           System.out.println("NICEONE");
@@ -206,7 +211,7 @@ public void volgendeVraag()
       }
     }
     public void fillQuestions(){
-     vragen[0] = new Vraag("How many holes in a POLO?","one","two","three", "four");
+      vragen[0] = new Vraag("How many holes in a POLO?","one","two","three", "four");
       vragen[1] = new Vraag("What do you call a wingless fly?","a flap","a walk","a plum","Jason");
       vragen[2] = new Vraag("Mary Rose sat on a pin", "O really?", "burst her piles", "aaaaaaaa", "mary Rose"); 
       vragen[3] = new Vraag("Can you get this question wrong?", "nope", "no", "no way", "of course not");
