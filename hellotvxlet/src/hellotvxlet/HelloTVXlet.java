@@ -2,18 +2,26 @@ package hellotvxlet;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import javax.tv.xlet.*;
+import org.havi.ui.HConfigurationException;
+import org.havi.ui.HPermissionDeniedException;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 import org.havi.ui.HStaticText;
 import org.havi.ui.HVisible;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.MediaTracker;
 import javax.tv.xlet.Xlet;
 import javax.tv.xlet.XletContext;
 import javax.tv.xlet.XletStateChangeException;
+import org.havi.ui.HBackgroundImage;
+import org.havi.ui.HIcon;
 import org.havi.ui.HScene;
 import org.havi.ui.HSceneFactory;
 import org.havi.ui.HStaticText;
+import org.havi.ui.HStillImageBackgroundConfiguration;
 import org.havi.ui.HTextButton;
 import org.havi.ui.HVisible;
 import org.havi.ui.event.*;
@@ -25,31 +33,39 @@ public class HelloTVXlet implements Xlet, HActionListener {
    public HTextButton button2;
    public HTextButton button3;
    public HTextButton button4;
+  // public HBackgroundImage image1 =new HBackgroundImage("wrongAnswer.png");
    public int lives=3;
    public HStaticText hst;
+  // public  HStillImageBackgroundConfiguration hsbgc;
+  // public HBackgroundImage background =new HBackgroundImage("stage.jpg");
    Vraag vragen[]=new Vraag[11];
-   int huidigevraag=0;
+   public int huidigevraag=0;
+   
     public HelloTVXlet() {
-        
+       
     }
 public void volgendeVraag()
 {
-    huidigevraag++;
-    System.out.println(huidigevraag);
-    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
-    button1.setTextContent(vragen[huidigevraag].an1, HVisible.NORMAL_STATE);
-    button2.setTextContent(vragen[huidigevraag].an2, HVisible.NORMAL_STATE);
-    button3.setTextContent(vragen[huidigevraag].an3, HVisible.NORMAL_STATE);
-    button4.setTextContent(vragen[huidigevraag].an4, HVisible.NORMAL_STATE);
-}
+    hst.setTextContent(vragen[huidigevraag+1].vrg, HVisible.NORMAL_STATE);
+    button1.setTextContent(vragen[huidigevraag+1].an1, HVisible.NORMAL_STATE);
+    button2.setTextContent(vragen[huidigevraag+1].an2, HVisible.NORMAL_STATE);
+    button3.setTextContent(vragen[huidigevraag+1].an3, HVisible.NORMAL_STATE);
+    button4.setTextContent(vragen[huidigevraag+1].an4, HVisible.NORMAL_STATE);
+   
+}   
     public void initXlet(XletContext context) {
       
       scene= HSceneFactory.getInstance().getDefaultHScene();
       hst=new HStaticText("Hello welcome to the Impossible Quiz",250,50,400,200);
+      
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
-      scene.add(hst);
+      
+      loadBgImage();
+        /*image1.load((HBackgroundImageListener) this);
+         hsbgc.displayImage(image1);*/
        
+      
       scene.setVisible(true);
       fillQuestions();
       startgame();
@@ -57,7 +73,7 @@ public void volgendeVraag()
       button1.requestFocus();
       
     }
-
+   
     public void startXlet() {
     
     }
@@ -97,6 +113,7 @@ public void volgendeVraag()
       button4.setBackground(Color.GREEN);
       scene.add(button4);
       
+      
       assignButton();
     
     }
@@ -118,97 +135,125 @@ public void volgendeVraag()
     }
     public void actionPerformed(ActionEvent arg0) {
         
-      if (huidigevraag==0 && arg0.getActionCommand().equals("knop4"))
+      if (huidigevraag==0)
       {
-         volgendeVraag();
-        // startgame();
-         System.out.println("NICEONE");
-      }
-      else{
-          System.out.println("false");
-          lives--;
-          falseAnswer();
-      }
-      if(huidigevraag==1 && arg0.getActionCommand().equals("knop2")){
-          volgendeVraag();
-          //startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-     if(huidigevraag==2 && arg0.getActionCommand().equals("knop4")){
-          volgendeVraag();
-          //startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==3 && (arg0.getActionCommand().equals("knop1") || arg0.getActionCommand().equals("knop2") || arg0.getActionCommand().equals("knop3") || arg0.getActionCommand().equals("knop4"))){
-          volgendeVraag();
-        //  startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==4 && arg0.getActionCommand().equals("knop1")){
-          volgendeVraag();
-        //  startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==5 && arg0.getActionCommand().equals("knop1")){
-          volgendeVraag();
-        //  startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==6 && arg0.getActionCommand().equals("knop3")){
-          volgendeVraag();
-        //  startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==7 && arg0.getActionCommand().equals("knop1")){
-          volgendeVraag();
-         // startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==8 && arg0.getActionCommand().equals("knop1")){
-          volgendeVraag();
-         // startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==9 && arg0.getActionCommand().equals("knop4")){
-          volgendeVraag();
-        //  startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
-       if(huidigevraag==10 && arg0.getActionCommand().equals("knop4")){
-          volgendeVraag();
-         // startgame();
-          System.out.println("NICEONE");
-      }
-      else{
-          lives--;
-      }
+          if(arg0.getActionCommand().equals("knop4")){
+               
+                volgendeVraag();
+                System.out.println("CORRECT");
+                 
+          }else{  
+             falseAnswer();
+             System.out.println("current lives :" +lives);
+          }
+          
+       }
+      if (huidigevraag==1)
+      {          
+          if(arg0.getActionCommand().equals("knop2")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+                
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" +lives);
+          }
+       }  
+     if (huidigevraag==2)
+      {
+         
+          if(arg0.getActionCommand().equals("knop4")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+    if (huidigevraag==3)
+      {
+          if(arg0.getActionCommand().equals("knop1") || arg0.getActionCommand().equals("knop2") || arg0.getActionCommand().equals("knop3") || arg0.getActionCommand().equals("knop4")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+     if (huidigevraag==4)
+      {
+          if(arg0.getActionCommand().equals("knop1")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+    if (huidigevraag==5)
+      {
+          if(arg0.getActionCommand().equals("knop1")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+    
+     if (huidigevraag==6)
+      {
+          if(arg0.getActionCommand().equals("knop3")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+     if (huidigevraag==7)
+      {
+          if(arg0.getActionCommand().equals("knop1")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+     if (huidigevraag==8)
+      {
+          if(arg0.getActionCommand().equals("knop1")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+      if (huidigevraag==9)
+      {
+          if(arg0.getActionCommand().equals("knop4")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" +lives);
+          }
+       }
+      if (huidigevraag==10)
+      {
+          if(arg0.getActionCommand().equals("knop4")){
+               volgendeVraag();
+                System.out.println("CORRECT");
+          }else{
+             falseAnswer();
+             System.out.println("current lives :" + lives);
+          }
+       }
+      
+ huidigevraag++;
+       
     }
     public void fillQuestions(){
       vragen[0] = new Vraag("How many holes in a POLO?","one","two","three", "four");
@@ -225,6 +270,42 @@ public void volgendeVraag()
     }
     
     public void falseAnswer(){
+        lives--;
+        if (lives==0){
+             Image gameover =scene.getToolkit().getImage("gameover.png");
+          MediaTracker mt=new MediaTracker(scene);
+          mt.addImage(gameover, 1);
+          try{
+          mt.waitForAll();
+          } catch (Exception e) { e.printStackTrace(); }
 
+          scene.setRenderMode(scene.IMAGE_CENTER);
+                System.out.println(gameover);
+                HIcon icon=new HIcon(gameover,100,100,890,500);
+                scene.add(icon);
+                scene.popToFront(icon);
+                scene.repaint();
+                
+            }
+    
     }
+    
+    public void loadBgImage()
+    {
+       
+      Image backgroundImg =scene.getToolkit().getImage("stage.jpg");
+      MediaTracker mt=new MediaTracker(scene);
+      mt.addImage(backgroundImg, 1);
+    
+      try{
+      mt.waitForAll();
+      } catch (Exception e) { e.printStackTrace(); }
+      scene.setBackgroundImage(backgroundImg);
+      scene.setRenderMode(scene.IMAGE_CENTER);
+            System.out.println(backgroundImg);
+         
+            
+    }
+    
+
 }
