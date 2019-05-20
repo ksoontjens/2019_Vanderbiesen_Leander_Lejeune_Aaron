@@ -35,7 +35,12 @@ public class HelloTVXlet implements Xlet, HActionListener {
 public void volgendeVraag()
 {
     huidigevraag++;
-
+    System.out.println(huidigevraag);
+    hst.setTextContent(vragen[huidigevraag].vrg, HVisible.NORMAL_STATE);
+    button1.setTextContent(vragen[huidigevraag].an1, HVisible.NORMAL_STATE);
+    button2.setTextContent(vragen[huidigevraag].an2, HVisible.NORMAL_STATE);
+    button3.setTextContent(vragen[huidigevraag].an3, HVisible.NORMAL_STATE);
+    button4.setTextContent(vragen[huidigevraag].an4, HVisible.NORMAL_STATE);
 }
     public void initXlet(XletContext context) {
       
@@ -122,6 +127,7 @@ public void volgendeVraag()
       else{
           System.out.println("false");
           lives--;
+          falseAnswer();
       }
       if(huidigevraag==1 && arg0.getActionCommand().equals("knop2")){
           volgendeVraag();
@@ -219,6 +225,6 @@ public void volgendeVraag()
     }
     
     public void falseAnswer(){
-        
+
     }
 }
