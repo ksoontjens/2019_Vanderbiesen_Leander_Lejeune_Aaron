@@ -33,11 +33,8 @@ public class HelloTVXlet implements Xlet, HActionListener {
    public HTextButton button2;
    public HTextButton button3;
    public HTextButton button4;
-  // public HBackgroundImage image1 =new HBackgroundImage("wrongAnswer.png");
    public int lives=3;
    public HStaticText hst;
-  // public  HStillImageBackgroundConfiguration hsbgc;
-  // public HBackgroundImage background =new HBackgroundImage("stage.jpg");
    Vraag vragen[]=new Vraag[11];
    public int huidigevraag=0;
    
@@ -46,6 +43,7 @@ public class HelloTVXlet implements Xlet, HActionListener {
     }
 public void volgendeVraag()
 {
+   loadHealthImages();
     hst.setTextContent(vragen[huidigevraag+1].vrg, HVisible.NORMAL_STATE);
     button1.setTextContent(vragen[huidigevraag+1].an1, HVisible.NORMAL_STATE);
     button2.setTextContent(vragen[huidigevraag+1].an2, HVisible.NORMAL_STATE);
@@ -60,18 +58,15 @@ public void volgendeVraag()
       
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
-      
+      loadHealthImages();
       loadBgImage();
-        /*image1.load((HBackgroundImageListener) this);
-         hsbgc.displayImage(image1);*/
-       
-      
+ 
       scene.setVisible(true);
       fillQuestions();
       startgame();
       scene.validate();
       button1.requestFocus();
-      
+     
     }
    
     public void startXlet() {
@@ -87,7 +82,7 @@ public void volgendeVraag()
     }
     public void startgame(){
     
-   
+    
       hst=new HStaticText(vragen[huidigevraag].vrg,20,300,680,100); // tekst,x,y,w,h
       hst.setBackgroundMode(HVisible.BACKGROUND_FILL);
       hst.setBackground(Color.BLUE);
@@ -137,12 +132,14 @@ public void volgendeVraag()
         
       if (huidigevraag==0)
       {
+          
           if(arg0.getActionCommand().equals("knop4")){
                
                 volgendeVraag();
                 System.out.println("CORRECT");
                  
           }else{  
+           
              falseAnswer();
              System.out.println("current lives :" +lives);
           }
@@ -151,10 +148,12 @@ public void volgendeVraag()
       if (huidigevraag==1)
       {          
           if(arg0.getActionCommand().equals("knop2")){
+             
                volgendeVraag();
                 System.out.println("CORRECT");
                 
           }else{
+         
              falseAnswer();
              System.out.println("current lives :" +lives);
           }
@@ -244,7 +243,7 @@ public void volgendeVraag()
       if (huidigevraag==10)
       {
           if(arg0.getActionCommand().equals("knop4")){
-               volgendeVraag();
+               winGame();
                 System.out.println("CORRECT");
           }else{
              falseAnswer();
@@ -271,8 +270,9 @@ public void volgendeVraag()
     
     public void falseAnswer(){
         lives--;
+        loadHealthImages();
         if (lives==0){
-             Image gameover =scene.getToolkit().getImage("gameover.png");
+          Image gameover =scene.getToolkit().getImage("gameover2.jpg");
           MediaTracker mt=new MediaTracker(scene);
           mt.addImage(gameover, 1);
           try{
@@ -281,13 +281,28 @@ public void volgendeVraag()
 
           scene.setRenderMode(scene.IMAGE_CENTER);
                 System.out.println(gameover);
-                HIcon icon=new HIcon(gameover,100,100,890,500);
+                HIcon icon=new HIcon(gameover,0,0,720,550);
                 scene.add(icon);
                 scene.popToFront(icon);
                 scene.repaint();
                 
             }
-    
+    }
+    public void winGame(){
+        Image wingame = scene.getToolkit().getImage("victory.jpg");
+        
+        MediaTracker mt = new MediaTracker(scene);
+        mt.addImage(wingame, 1);
+        try{
+            mt.waitForAll();
+        } catch (Exception e) { e.printStackTrace(); }
+        
+        scene.setRenderMode(scene.IMAGE_CENTER);
+                System.out.println(wingame);
+                HIcon icon=new HIcon(wingame,0,0,720,550);
+                scene.add(icon);
+                scene.popToFront(icon);
+                scene.repaint();
     }
     
     public void loadBgImage()
@@ -303,9 +318,64 @@ public void volgendeVraag()
       scene.setBackgroundImage(backgroundImg);
       scene.setRenderMode(scene.IMAGE_CENTER);
             System.out.println(backgroundImg);
-         
-            
+               
     }
     
+    public void loadHealthImages()
+    {
+           
+        Image health1 = scene.getToolkit().getImage("health.png.");
+        Image health2 = scene.getToolkit().getImage("health.png");
+        Image health3 = scene.getToolkit().getImage("health.png");
+        MediaTracker mt = new MediaTracker(scene);
+         mt.addImage(health1, 1);
+            mt.addImage(health2, 1);
+            mt.addImage(health3, 1);
+            try{
+            mt.waitForAll();
+        } catch (Exception e) { e.printStackTrace(); } 
+            
+        scene.setRenderMode(scene.IMAGE_CENTER);
+       
+       
+          HIcon icon=new HIcon(health1,0,0,100,70);
+             HIcon icon2=new HIcon(health2,0,0,300,70);
+            HIcon icon3=new HIcon(health3,0,0,500,70);
+        if (lives == 3)
+        {
+           
+                  System.out.println("load3images");
+                scene.add(icon);
+                scene.popToFront(icon);
+                
+                scene.add(icon2);
+                scene.popToFront(icon2);
+                
+                scene.add(icon3);
+                scene.popToFront(icon3);
+               
+               
+        }else if( lives == 2){
+         
+      
+                System.out.println("load2images");
+                scene.add(icon);
+                scene.popToFront(icon);
+                scene.remove(icon3);
+                scene.add(icon2);
+                scene.popToFront(icon2);
+                 scene.repaint();
+                
+        }else if( lives == 1){
 
+             System.out.println("load1image");
+             scene.remove(icon3);
+             scene.remove(icon2);
+            scene.add(icon);
+            scene.popToFront(icon);
+             
+          
+        }
+    scene.repaint();
+    }
 }
