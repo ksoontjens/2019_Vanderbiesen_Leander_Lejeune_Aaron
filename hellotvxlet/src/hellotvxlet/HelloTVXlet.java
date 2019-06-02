@@ -337,10 +337,10 @@ public void volgendeVraag()
             
         scene.setRenderMode(scene.IMAGE_CENTER);
        
-       
           HIcon icon=new HIcon(health1,0,0,100,70);
              HIcon icon2=new HIcon(health2,0,0,300,70);
             HIcon icon3=new HIcon(health3,0,0,500,70);
+            
         if (lives == 3)
         {
            
